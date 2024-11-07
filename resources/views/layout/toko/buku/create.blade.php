@@ -43,6 +43,10 @@
                     <label for="date" class="form-label">Tanggal</label>
                     <input type="datetime-local" class="form-control" id="date" name="date" required>
                 </div>
+                <div class="mb-3">
+                    <label for="stok" class="form-label">Stok</label> <!-- Tambahkan label stok -->
+                    <input type="number" class="form-control" id="stok" name="stok" required> <!-- Tambahkan input stok -->
+                </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>

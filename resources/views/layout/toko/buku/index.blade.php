@@ -29,6 +29,7 @@
                         <p class="text-muted">Kategori: {{ $item->kategori }}</p>
                         <p class="text-muted">Harga: Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
                         <p class="text-muted">Tanggal Terbit: {{ $item->date->format('d-m-Y H:i') }}</p>
+                        <p class="text-muted">Stok: {{ $item->stok }}</p>
                         <a href="{{ route('buku.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('buku.destroy', $item->id) }}" method="POST" style="display:inline;">
                             @csrf

@@ -50,6 +50,10 @@
                     <label for="date" class="form-label">Tanggal</label>
                     <input type="datetime-local" class="form-control" id="date" name="date" value="{{ $buku->date->format('Y-m-d\TH:i') }}" required>
                 </div>
+                <div class="mb-3">
+                    <label for="stok" class="form-label">Stok</label> <!-- Tambahkan label stok -->
+                    <input type="number" class="form-control" id="stok" name="stok" value="{{ $buku->stok }}" required> <!-- Tambahkan input stok -->
+                </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>

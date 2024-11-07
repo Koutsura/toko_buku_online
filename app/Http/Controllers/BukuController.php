@@ -37,6 +37,7 @@ class BukuController extends Controller
         'deskripsi' => 'required|string',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'date' => 'required|date',
+        'stok' => 'required|integer|min:0',
     ]);
 
 // Menyimpan file gambar
@@ -57,6 +58,7 @@ if ($request->hasFile('image') && $request->file('image')->isValid()) {
     $buku->deskripsi = $request->deskripsi;
     $buku->image = basename($imagePath); // Hanya menyimpan nama file
     $buku->date = Carbon::parse($request->date); // Menggunakan Carbon untuk parsing tanggal
+    $buku->stok = $request->stok;
     $buku->save();
 
 
@@ -82,6 +84,7 @@ public function update(Request $request, $id)
         'deskripsi' => 'required|string',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'date' => 'required|date',
+        'stok' => 'required|integer|min:0',
     ]);
 
     // Temukan buku berdasarkan ID
@@ -114,6 +117,7 @@ public function update(Request $request, $id)
     $buku->kategori = $request->kategori;
     $buku->deskripsi = $request->deskripsi;
     $buku->date = Carbon::parse($request->date);
+    $buku->stok = $request->stok;
     $buku->save();
 
     return redirect()->route('buku.index')->with('success', 'Buku berhasil diperbarui');
