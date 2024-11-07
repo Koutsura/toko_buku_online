@@ -21,3 +21,8 @@ Route::post('/toko/buku', [App\Http\Controllers\BukuController::class, 'store'])
 Route::get('/toko/buku/{id}/edit', [App\Http\Controllers\BukuController::class, 'edit'])->name('buku.edit');
 Route::put('/toko/buku/{id}', [App\Http\Controllers\BukuController::class, 'update'])->name('buku.update');
 Route::delete('/toko/buku/{id}', [App\Http\Controllers\BukuController::class, 'destroy'])->name('buku.destroy');
+
+
+Route::get('/toko/sale', [App\Http\Controllers\SaleController::class, 'index'])->name('sale.index');
+Route::get('/toko/sale/create', [App\Http\Controllers\SaleController::class, 'create'])->name('sale.create');
+Route::post('/toko/sale', [App\Http\Controllers\SaleController::class, 'store'])->name('sale.store');
