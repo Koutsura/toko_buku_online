@@ -1,19 +1,28 @@
+<!-- layout.app.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
+    <!-- Link ke CSS global (tidak menggunakan Bootstrap disini) -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Tempat untuk style tambahan dari view -->
+    @stack('styles')
 </head>
 <body>
-    <!-- Menyertakan file header -->
+    <!-- Menyertakan header -->
     @include('layout.header')
 
+    <!-- Konten utama -->
+    @yield('content')
 
-    <!-- Menyertakan file footer -->
+    <!-- Menyertakan footer -->
     @include('layout.footer')
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Tempat untuk script tambahan dari view -->
+    @stack('scripts')
 </body>
 </html>

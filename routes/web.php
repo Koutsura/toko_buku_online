@@ -26,3 +26,5 @@ Route::delete('/toko/buku/{id}', [App\Http\Controllers\BukuController::class, 'd
 Route::get('/toko/sale', [App\Http\Controllers\SaleController::class, 'index'])->name('sale.index');
 Route::get('/toko/sale/create', [App\Http\Controllers\SaleController::class, 'create'])->name('sale.create');
 Route::post('/toko/sale', [App\Http\Controllers\SaleController::class, 'store'])->name('sale.store');
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
