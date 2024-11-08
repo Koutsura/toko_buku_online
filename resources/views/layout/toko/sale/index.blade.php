@@ -1,3 +1,5 @@
+@extends('layout.app') <!-- Menggunakan layout app -->
+@section('contents')
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -23,6 +25,14 @@
 
     <div class="container">
         <h1 class="text-center">Daftar Transaksi</h1>
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-6">
+                <form action="{{ route('sale.index') }}" method="GET" class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Judul Buku...">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
 
         <!-- Tabel Bootstrap untuk menampilkan daftar transaksi -->
         <table class="table table-bordered table-hover table-striped">
@@ -56,3 +66,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+@endsection

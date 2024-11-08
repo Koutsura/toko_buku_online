@@ -26,10 +26,20 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+            // Ambil role pengguna yang sedang login
+            $role = Auth::user()->role;
+
+            // Arahkan ke halaman yang sesuai berdasarkan role
+            if ($role === 'customer') {
+                return redirect()->intended('dashboard')->with('success', 'Login berhasil!');
+            } elseif ($role === 'admin') {
+                return redirect()->intended(route('layout.toko.buku.index'))->with('success', 'Login berhasil!');
+            }
         }
 
+        // Jika login gagal, kembali ke halaman login dengan pesan error
         return back()->withErrors(['email' => 'Invalid email or password.'])->withInput();
+
     }
 
     // Example dashboard route
@@ -72,8 +82,13 @@ class AuthController extends Controller
     ]);
 
     Auth::login($user);
+    // Arahkan ke halaman yang sesuai berdasarkan role
+    if ($role === 'customer') {
+        return redirect()->intended('dashboard');
+    } elseif ($role === 'admin') {
+        return redirect()->intended(route('layout.toko.buku.index'));
+    }
 
-    return redirect()->intended('dashboard');
 }
 
 

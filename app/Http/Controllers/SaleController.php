@@ -10,21 +10,33 @@ use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
-    public function index()
-    {
-        // Menampilkan daftar transaksi
-        $sale = Sale::with(['user', 'book'])->get();
-        return view('layout.toko.sale.index', compact('sale'));
+    public function index(Request $request)
+{
+    // Ambil parameter search dari request
+    $search = $request->get('search');
+
+    // Query Sale berdasarkan pencarian buku
+    if ($search) {
+        $sale = Sale::with(['user', 'book'])
+            ->whereHas('book', function($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%");
+            })
+            ->get();
+    } else {
+        $sale = Sale::with(['user', 'book'])->get(); // Semua transaksi jika tidak ada pencarian
     }
 
-    public function invoice($sale_id)
-{
-    // Mengambil transaksi berdasarkan sale_id
-    $sale = Sale::with('user', 'book')->findOrFail($sale_id);
+    // Ambil buku untuk pencarian (jika diperlukan untuk menampilkan daftar buku)
+    if ($search) {
+        $buku = Buku::where('title', 'like', "%{$search}%")->get();
+    } else {
+        $buku = Buku::all();
+    }
 
-    // Tampilkan view dengan data transaksi
-    return view('layout.toko.sale.invoice', compact('sale'));
+    // Kirim data sale dan buku ke view
+    return view('layout.toko.sale.index', compact('sale', 'buku'));
 }
+
 
 
     public function create(Request $request)

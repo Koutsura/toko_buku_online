@@ -15,7 +15,7 @@ Route::get('/password/reset', [App\Http\Controllers\AuthController::class, 'show
 Route::post('/password/update', action: [App\Http\Controllers\AuthController::class, 'updatePassword'])->name('password.update');
 
 
-Route::get('/toko/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
+Route::get('/toko/buku/index', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
 Route::get('/toko/buku/create', [App\Http\Controllers\BukuController::class, 'create'])->name('buku.create');
 Route::post('/toko/buku', [App\Http\Controllers\BukuController::class, 'store'])->name('buku.store');
 Route::get('/toko/buku/{id}/edit', [App\Http\Controllers\BukuController::class, 'edit'])->name('buku.edit');
@@ -33,4 +33,5 @@ Route::get('/toko/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController:
 Route::put('/toko/hakakses/update/{id}', [App\Http\Controllers\HakaksesController::class, 'update'])->name('hakakses.update')/* ->middleware('admin') */;
 Route::delete('/toko/hakakses/delete/{id}', [App\Http\Controllers\HakaksesController::class, 'destroy'])->name('hakakses.delete')/* ->middleware('admin') */;
 
+Route::get('layout/toko/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('layout.toko.buku.index');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

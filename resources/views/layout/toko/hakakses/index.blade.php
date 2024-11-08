@@ -1,3 +1,5 @@
+@extends('layout.app') <!-- Menggunakan layout app -->
+@section('contents')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
     <div class="row mb-4 justify-content-center">
         <div class="col-md-6">
             <form action="{{ route('hakakses.index') }}" method="GET" class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan ID...">
+                <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Nama...">
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
@@ -62,3 +64,4 @@
 
 </body>
 </html>
+@endsection

@@ -15,9 +15,11 @@ class BukuController extends Controller
     // Menampilkan daftar buku
     public function index()
     {
-        $buku = Buku::all(); // Mengambil semua data buku
-        return view('layout.toko.buku.index', compact('buku'));
+        $buku = Buku::all(); // Get all books
+        $firstBook = $buku->first(); // Get the first book from the collection
+        return view('layout.toko.buku.index', compact('buku', 'firstBook')); // Pass both variables
     }
+
 
     // Menampilkan form untuk menambah buku baru
     public function create()
