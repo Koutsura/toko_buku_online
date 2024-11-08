@@ -6,6 +6,7 @@ use App\Models\Buku;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -16,13 +17,41 @@ class SaleController extends Controller
         return view('layout.toko.sale.index', compact('sale'));
     }
 
-    public function create()
+    public function invoice($sale_id)
+{
+    // Mengambil transaksi berdasarkan sale_id
+    $sale = Sale::with('user', 'book')->findOrFail($sale_id);
+
+    // Tampilkan view dengan data transaksi
+    return view('layout.toko.sale.invoice', compact('sale'));
+}
+
+
+    public function create(Request $request)
     {
-        // Menampilkan form transaksi
-        $books = Buku::all();
-        $users = User::all();
-        Log::info('Users:', $users->toArray());
-        return view('layout.toko.sale.create', compact('books', 'users'));
+         // Ambil ID buku dari request (jika ada)
+    $bookId = $request->input('id');
+    $harga = $request->input('harga'); // Harga yang dikirimkan melalui URL (bisa ditambahkan jika perlu)
+
+    // Ambil semua buku untuk daftar produk
+    $books = Buku::all();
+    // Ambil semua pengguna untuk keperluan tampilan jika diperlukan
+    $users = User::all();
+
+    // Ambil data pengguna yang sedang login
+    $user = Auth::user(); // Menggunakan Auth::user() untuk mendapatkan pengguna yang sedang login
+
+    // Log untuk melihat data pengguna (ini hanya untuk debugging, bisa dihapus nanti)
+    Log::info('Current User: ' . json_encode($user));
+
+    // Anda bisa menambahkan logika penyesuaian harga berdasarkan role atau preferensi pengguna
+    if ($user && $user->role == 'member') {
+        // Contoh diskon 10% untuk member
+        $harga = $harga - ($harga * 0.10);
+    }
+
+    // Kirim data buku, pengguna, dan harga (jika perlu) ke view
+    return view('layout.toko.sale.create', compact('books', 'users', 'harga', 'user'));
     }
 
     public function store(Request $request)
@@ -35,6 +64,12 @@ class SaleController extends Controller
 
     // Ambil data buku untuk menghitung total harga
     $book = Buku::findOrFail($request->book_id);
+
+// Ambil harga satuan dari data buku
+$unit_price = $book->unit_price;
+
+// Hitung total harga
+$total_price = $unit_price * $request->quantity;
 
     // Periksa apakah stok cukup
     if ($book->stok < $request->quantity) {
@@ -56,8 +91,9 @@ class SaleController extends Controller
     $book->stok -= $request->quantity;
     $book->save();  // Simpan perubahan stok ke database
 
-    return redirect()->route('sale.index')->with('success', 'Transaksi berhasil disimpan.');
+    return redirect()->route('sale.invoice', ['sale_id' => $sale->sale_id])->with('success', 'Transaksi berhasil disimpan.');
 }
+
 
 
 

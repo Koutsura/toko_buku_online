@@ -10,6 +10,7 @@ class sale extends Model
     use HasFactory;
 
     protected $table = 'sale'; // pastikan nama tabel sesuai
+    protected $primaryKey = 'sale_id'; // Nama kolom primary key jika tidak bernama 'id'
     protected $fillable = ['user_id', 'book_id', 'quantity', 'total_price'];
     public $timestamps = false;
 

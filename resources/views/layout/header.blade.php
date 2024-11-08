@@ -84,9 +84,9 @@
       <div class="dropdown">
         <button class="dropbtn">Category 🔻</button>
         <div class="dropdown-content">
-          <a href="#">Adventure</a>
-          <a href="#">Magic</a>
-          <a href="#">Knowledge</a>
+          <a href="#">IT</a>
+          <a href="#">sejarah</a>
+          <a href="#">agama</a>
         </div>
       </div>
       <a href="contact-us.php">Contact Us</a>
