@@ -3,81 +3,109 @@
 <head>
   <link rel="stylesheet" href="{{ asset('css/hello.css') }}">
   <style>
-    /* Style for the dropdown menu */
-    .sub-menu-wrap {
-      position: absolute;
-      top: 10%;
-      right: 10%;
-      width: 320px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-    }
-    .sub-menu-wrap.open-menu {
-      max-height: 400px;
-    }
-    .sub-menu {
-      background: #fff;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .user-info {
+    /* Style for the header and navbar */
+    header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      padding: 10px 15px; /* Reduced padding */
+      background-color: #f8f9fa;
     }
-    .user-info h3 {
-      font-weight: 500;
-      margin: 0;
-    }
-    .user-info img {
-      width: 60px;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
-    .sub-menu hr {
-      border: none;
-      height: 1px;
-      width: 100%;
-      background: #ccc;
-      margin: 15px 0;
-    }
-    .sub-menu-link {
-      display: flex;
-      align-items: center;
+
+    .logo a {
+      font-size: 24px; /* Smaller font size */
+      font-weight: bold;
+      color: #333;
       text-decoration: none;
-      color: #525252;
-      margin: 12px 0;
-      transition: font-weight 0.3s ease;
     }
-    .sub-menu-link p {
-      flex-grow: 1;
-      margin: 0;
+
+    .nav {
+      display: flex;
+      gap: 15px; /* Reduced gap between items */
+      list-style: none;
     }
-    .sub-menu-link img {
-      width: 40px;
-      background: #e5e5e5;
-      border-radius: 50%;
-      padding: 8px;
-      margin-right: 15px;
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px; /* Smaller font size */
+      padding: 8px 12px; /* Smaller padding */
+      transition: background-color 0.3s ease;
     }
-    .sub-menu-link span {
-      font-size: 22px;
-      transition: transform 0.3s ease;
+
+    .nav a:hover {
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
     }
-    .sub-menu-link:hover span {
-      transform: translateX(5px);
+
+    .dropdown {
+      position: relative;
     }
-    .sub-menu-link:hover p {
-      font-weight: 600;
+
+    .dropbtn {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 8px 16px; /* Smaller padding */
+      font-size: 16px; /* Smaller font size */
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      padding: 10px 14px; /* Smaller padding */
+      text-decoration: none;
+      display: block;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .logout-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .container h2 {
+      font-size: 18px; /* Smaller font size */
+      font-weight: 500;
+      color: #333;
+    }
+
+    .btn-danger {
+      padding: 8px 16px; /* Smaller padding */
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <a href="index.php"><span>Read</span><span class="me">Me</span></a>
+      <a href="index.php"><span>Buku</span><span class="me">Bersama</span></a>
     </div>
     <nav class="nav">
       <a href="index.php">Home</a>
@@ -85,15 +113,18 @@
         <button class="dropbtn">Category 🔻</button>
         <div class="dropdown-content">
           <a href="#">IT</a>
-          <a href="#">sejarah</a>
-          <a href="#">agama</a>
+          <a href="#">Sejarah</a>
+          <a href="#">Agama</a>
         </div>
       </div>
       <a href="contact-us.php">Contact Us</a>
       <a href="cart.php">Cart</a>
       <a href="orders.php">Orders</a>
     </nav>
-    <div class="container mt-5">
+
+    <!-- Logout button aligned to the right -->
+    <div class="logout-container">
+      <div class="container mt-5">
         <h2>Welcome, {{ Auth::user()->name }}!</h2>
 
         <!-- Logout Form -->
@@ -102,35 +133,8 @@
           <button type="submit" class="btn btn-danger">Logout</button>
         </form>
       </div>
-
-  </header>
-
-  <!-- Sub-menu structure -->
-  <div class="sub-menu-wrap" id="subMenu">
-    <div class="sub-menu">
-      <div class="user-info">
-        <img src="images/user.png" alt="User Image">
-        <h2>James Aldrino</h2>
-      </div>
-      <hr>
-      <a href="#" class="sub-menu-link">
-        <p>Edit Profile</p>
-        <span>&gt;</span>
-      </a>
-      <a href="#" class="sub-menu-link">
-        <p>Cart</p>
-        <span>&gt;</span>
-      </a>
-      <a href="#" class="sub-menu-link">
-        <p>Order History</p>
-        <span>&gt;</span>
-      </a>
-      <a href="#" class="sub-menu-link">
-        <p>Logout</p>
-        <span>&gt;</span>
-      </a>
     </div>
-  </div>
+  </header>
 
   <script>
     const subMenu = document.getElementById("subMenu");

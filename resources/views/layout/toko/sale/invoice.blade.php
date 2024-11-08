@@ -25,15 +25,13 @@
                 <p><strong>Jumlah:</strong> {{ $sale->quantity }}</p>
                 <p><strong>Total Harga:</strong> Rp{{ number_format($sale->total_price, 0, ',', '.') }}</p>
 
-
-
             </div>
         </div>
 
         <!-- Tombol untuk Cetak atau Kembali -->
         <div class="text-center mt-4">
             <button onclick="window.print()" class="btn btn-primary">Cetak Struk</button>
-            <a href="{{ route('sale.create') }}" class="btn btn-secondary">Kembali ke Pembelian</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke dashboard</a>
         </div>
     </div>
 </body>

@@ -1,140 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <style>
-    * {
-      text-decoration: none;
-      list-style: none;
-      color: black;
-      margin: 0;
-      padding: 0;
-    }
-
-    footer {
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 40px;
-    }
-
-    h2 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .flex {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ul li:not(:first-child) {
-      padding: 5px 0;
-    }
-
-    .short_links ul {
-      margin: 0 110px;
-    }
-
-    .sub_main .dropdown .dropbtn {
-      border: none;
-      cursor: pointer;
-      background: none;
-      color: black;
-    }
-
-    .sub_main .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .sub_main .dropdown .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #CCCCCC;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .sub_main .dropdown .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .sub_main .dropdown .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    .sub_main .dropdown:hover .dropdown-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cmsg {
-      margin: 20px 0 0;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .cmsg .logo {
-      font-size: 15px;
-      margin-left: 5px;
-    }
-  </style>
-</head>
-<body>
-
-<footer style="margin: 30px auto 0;">
-  <div class="main">
-    <div class="sub_main">
-      <div class="short_links flex">
-        <ul>
-          <h2>Quick Links</h2>
-          <li><a href="index.php">Home</a></li>
-          <li>
-            <div class="dropdown">
-              <a class="dropbtn">Category 🔻</a>
-              <div class="dropdown-content">
-                <a href="index.php#Adventure">Adventure</a>
-                <a href="index.php#Magical">Magic</a>
-                <a href="index.php#Knowledge">Knowledge</a>
-              </div>
+<!-- FOOTER -->
+<style>
+    .footer {
+        background-color: #F8F9FA;
+      }
+</style>
+      <section id="footer" class="footer">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Pulau</h6>
+              <p>
+                Toko buku online adalah platform digital yang memungkinkan pengguna untuk membeli berbagai jenis buku melalui internet.
+              </p>
             </div>
-          </li>
-          <li><a href="about-us.php">About Us</a></li>
-        </ul>
+            <!-- Grid column -->
 
-        <!-- Account section (displayed if user is logged in) -->
-        <ul class="account">
-          <h2>Account</h2>
-          <li><a href="#">Profile</a></li>
-          <li><a href="cart.php">Cart</a></li>
-          <li><a href="orders.php">Order History</a></li>
-          <li><a href="logout.php">Logout</a></li>
-        </ul>
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Markup Language</h6>
+              <p>
+                <a href="https://www.w3schools.com/html/" class="text-reset">HTML</a>
+              </p>
+              <p>
+                <a href="https://www.w3schools.com/css/" class="text-reset">CSS</a>
+              </p>
+              <p>
+                <a href="https://www.w3schools.com/js/" class="text-reset">Javascript</a>
+              </p>
+              <p>
+                <a href="https://getbootstrap.com/" class="text-reset">Boostrap</a>
+              </p>
+            </div>
+            <!-- Grid column -->
 
-        <ul>
-          <h2>Contact</h2>
-          <li><a href="contact-us.php">Contact Form</a></li>
-          <li>+91 5324851596</li>
-          <li>contact@bookflix.com</li>
-          <li>Address: Mumbai 400065</li>
-        </ul>
-      </div>
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Source</h6>
+              <p>
+                <a href="https://www.wikipedia.org/" class="text-reset">Wikipedia</a>
+              </p>
+              <p>
+                <a href="https://www.youtube.com/" class="text-reset">Youtube</a>
+              </p>
+              <p></p>
+            </div>
+
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Kontak</h6>
+              <p><i class="fas fa-home me-3"></i>Sumatera Selatan,Indonesia</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                211420054@student.binadarma.ac.id
+              </p>
+              <p><i class="fas fa-phone me-3"></i> +62 822 8289 3049</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
     </div>
-    <div class="cmsg flex">
-      <p>Designed By Pawan Mishra | Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved by </p>
-      <div class="logo">
-        <a href="index.php">
-          <span> Bookflix &</span>
-          <span class="me"> Chill</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
