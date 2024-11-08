@@ -28,6 +28,9 @@ Route::get('/toko/sale/create', [App\Http\Controllers\SaleController::class, 'cr
 Route::post('/toko/sale', [App\Http\Controllers\SaleController::class, 'store'])->name('sale.store');
 Route::get('/invoice/{sale_id}', [App\Http\Controllers\SaleController::class, 'invoice'])->name('sale.invoice');
 
-
+Route::get('/toko/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')/* ->middleware('admin') */;
+Route::get('/toko/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')/* ->middleware('admin') */;
+Route::put('/toko/hakakses/update/{id}', [App\Http\Controllers\HakaksesController::class, 'update'])->name('hakakses.update')/* ->middleware('admin') */;
+Route::delete('/toko/hakakses/delete/{id}', [App\Http\Controllers\HakaksesController::class, 'destroy'])->name('hakakses.delete')/* ->middleware('admin') */;
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
