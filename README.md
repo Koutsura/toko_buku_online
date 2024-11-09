@@ -17,9 +17,11 @@ QA: Audry Maharani
 1. Clone the repo: git clone https://github.com/Koutsura/toko_buku_online.git
 2. Run cd toko_buku_online
 3. Run composer install command
-4. Run npm install command
-5. Run npm run dev command
-6. Run cp .env.example .env command
-7. Run php artisan key:generate command
-8. Run php artisan serve command
-9. Done
+4. Run composer require barryvdh/laravel-dompdf //untuk setting laravel install pdf
+5. Run npm install command
+6. Run npm run dev command
+7. Run cp .env.example .env command
+8. Run php artisan key:generate command
+9. Run php artisan serve command
+10. Masukkan database "db_buku" ada di folder database pada .env
+11. Done

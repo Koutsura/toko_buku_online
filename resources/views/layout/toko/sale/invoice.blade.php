@@ -33,7 +33,10 @@
 
         <!-- Tombol untuk Cetak atau Kembali -->
         <div class="text-center mt-4">
-            <button onclick="window.print()" class="btn btn-primary">Cetak Struk</button>
+            <form action="{{ route('sale.invoice.download', $sale->sale_id) }}" method="GET">
+                <button type="submit" class="btn btn-primary">Cetak Struk (PDF)</button>
+            </form>
+            <br>
             <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke dashboard</a>
         </div>
     </div>

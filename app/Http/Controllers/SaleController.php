@@ -5,8 +5,10 @@ use App\Models\Sale;
 use App\Models\Buku;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+
 
 class SaleController extends Controller
 {
@@ -113,9 +115,22 @@ public function invoice($sale_id)
     // Cari data transaksi berdasarkan sale_id
     $sale = Sale::with(['user', 'book'])->findOrFail($sale_id);
 
-    // Kirim data transaksi ke view invoice
+    // Render halaman invoice (HTML)
     return view('layout.toko.sale.invoice', compact('sale'));
 }
+
+public function invoiceDownload($sale_id)
+{
+    // Cari data transaksi berdasarkan sale_id
+    $sale = Sale::with(['user', 'book'])->findOrFail($sale_id);
+
+    // Render invoice sebagai PDF dan langsung download
+    $pdf = PDF::loadView('layout.toko.sale.invoice', compact('sale'));
+
+    // Menyimpan atau mengunduh PDF
+    return $pdf->download('Bukti Pembayaran' . '.pdf');
+}
+
 
 
 
