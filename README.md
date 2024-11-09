@@ -1,7 +1,8 @@
 Decadev
 <div class="container about-us">
     <h2>About Us</h2>
-    <img src="{{ asset('images/DecaDev.png') }}" alt="Buku Image" class="img-thumbnail mx-auto d-block" width="150">
+    ![Buku Image](http://localhost/images/DecaDev.png)
+
     <p>
         PM : Della Anissa Putri Widodo
     </p>
