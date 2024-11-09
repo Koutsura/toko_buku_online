@@ -66,6 +66,8 @@ class SaleController extends Controller
     return view('layout.toko.sale.create', compact('books', 'users', 'harga', 'user'));
     }
 
+
+
     public function store(Request $request)
 {
     $request->validate([
@@ -105,6 +107,16 @@ $total_price = $unit_price * $request->quantity;
 
     return redirect()->route('sale.invoice', ['sale_id' => $sale->sale_id])->with('success', 'Transaksi berhasil disimpan.');
 }
+
+public function invoice($sale_id)
+{
+    // Cari data transaksi berdasarkan sale_id
+    $sale = Sale::with(['user', 'book'])->findOrFail($sale_id);
+
+    // Kirim data transaksi ke view invoice
+    return view('layout.toko.sale.invoice', compact('sale'));
+}
+
 
 
 

@@ -57,13 +57,7 @@
                                     <label class="form-label">Repeat your password</label>
                                 </div>
 
-                                <!-- Select input untuk role, otomatis customer -->
-                                <div class="form-outline mb-4">
-                                <label class="form-label">Role</label>
-                                <select name="role" class="form-control" readonly>
-                                <option value="customer" selected>Customer</option>
-                                </select>
-                                </div>
+
 
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{{ route('login') }}" class="fw-bold text-body"><u>Login here</u></a></p>

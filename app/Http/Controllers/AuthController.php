@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Buku;
 
 
 
@@ -97,7 +98,8 @@ class AuthController extends Controller
     public function logout(Request $request)
 {
     Auth::logout();
-    return view('welcome')->with('success', 'Successfully logged out!');
+    $items = Buku::all(); // Mengambil semua data buku
+    return view('welcome', compact('items'))->with('success', 'Successfully logged out!');
 }
 
 // Show reset password form
