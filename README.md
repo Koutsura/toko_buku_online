@@ -14,7 +14,12 @@ QA: Audry Maharani
 **Filosofi**: "Deca" berarti sepuluh, mencerminkan jumlah anggota tim. Nama ini juga menekankan bahwa setiap orang dalam tim adalah developer handal yang berkontribusi penuh untuk mencapai kesuksesan bersama.
 
 ## cara clone
-Clone the repo: git clone https://github.com/Koutsura/toko_buku_online.git
-Run cd 
-Run composer install command
-Done
+1. Clone the repo: git clone https://github.com/Koutsura/toko_buku_online.git
+2. Run cd toko_buku_online
+3. Run composer install command
+4. Run npm install command
+5. Run npm run dev command
+6. Run cp .env.example .env command
+7. Run php artisan key:generate command
+8. Run php artisan serve command
+9. Done
