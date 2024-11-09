@@ -13,7 +13,7 @@
               <!-- Content -->
               <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Pulau</h6>
               <p>
-                Toko buku online adalah platform digital yang memungkinkan pengguna untuk membeli berbagai jenis buku melalui internet.
+                Website Buku Bersama adalah platform digital yang memungkinkan pengguna untuk membeli berbagai jenis buku melalui internet.
               </p>
             </div>
             <!-- Grid column -->
@@ -40,12 +40,12 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Source</h6>
+              <h6 class="text-uppercase fw-bold mb-4">Program & Framework</h6>
               <p>
-                <a href="https://www.wikipedia.org/" class="text-reset">Wikipedia</a>
+                <a href="https://www.php.net/" class="text-reset">PHP</a>
               </p>
               <p>
-                <a href="https://www.youtube.com/" class="text-reset">Youtube</a>
+                <a href="https://laravel.com/docs/11.x" class="text-reset">Laravel</a>
               </p>
               <p></p>
             </div>
@@ -56,7 +56,7 @@
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Kontak</h6>
-              <p><i class="fas fa-home me-3"></i>Sumatera Selatan,Indonesia</p>
+              <p><i class="fas fa-home me-3"></i>Kelompok 6, Decadev</p>
               <p>
                 <i class="fas fa-envelope me-3"></i>
                 211420054@student.binadarma.ac.id

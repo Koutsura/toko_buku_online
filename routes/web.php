@@ -36,5 +36,6 @@ Route::delete('/toko/hakakses/delete/{id}', [App\Http\Controllers\HakaksesContro
 Route::get('layout/toko/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('layout.toko.buku.index')->middleware('admin');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('customer');
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
 

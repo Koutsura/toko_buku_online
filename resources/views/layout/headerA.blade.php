@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="{{ asset('css/hello.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="description" content="Website Buku Bersama" />
+    <meta name="keywords" content="HTML,CSS, Javascript,laravel,PHP" />
+    <meta name="author" content="Decadev" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Header Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/hello.css') }}">
   <style>
     /* Style for the header and navbar */
     header {
