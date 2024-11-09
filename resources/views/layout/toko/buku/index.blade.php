@@ -1,5 +1,6 @@
 @extends('layout.app') <!-- Menggunakan layout app -->
 @section('contents')
+@include('layout.carousel')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
     <div class="container mt-5">
         <h2 class="mb-4">Daftar Buku</h2>
         <a href="{{ route('buku.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
@@ -49,7 +51,7 @@
 
         </div>
     </div>
-
+    @include('layout.kecil')
 
     <!-- Tambahkan CDN Bootstrap JS di sini -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

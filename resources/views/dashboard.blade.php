@@ -1,10 +1,10 @@
 @extends('layout.app') <!-- Menggunakan layout app -->
 
 @section('content')
+@include('layout.carousel')
     <!-- Menyertakan Bootstrap CSS langsung di sini -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
 
     <!-- Konten Utama: Daftar Buku -->
     <div class="container mt-4">
@@ -46,9 +46,12 @@
                         </div>
                     </div>
                 </div>
+
+
             @endforeach
         </div>
     </div>
+@include('layout.kecil')
 
 
     <!-- Menyertakan Bootstrap JS langsung di sini -->

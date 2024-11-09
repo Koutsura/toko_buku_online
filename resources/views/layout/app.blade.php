@@ -26,6 +26,7 @@
     @yield('contents')
     @endif
 
+
     <!-- Menyertakan footer -->
     @include('layout.footer')
 

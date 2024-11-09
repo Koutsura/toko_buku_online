@@ -82,6 +82,7 @@
         @endif
       </div>
   </header>
+  @include('layout.carousel')
 
   <!-- Konten Utama: Daftar Buku -->
 <div class="container mt-4">
@@ -111,6 +112,7 @@
         @endforeach
     </div>
 </div>
+@include('layout.kecil')
 @include('layout.footer')
 
   <script>
