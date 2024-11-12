@@ -59,10 +59,10 @@ class SaleController extends Controller
     Log::info('Current User: ' . json_encode($user));
 
     // Anda bisa menambahkan logika penyesuaian harga berdasarkan role atau preferensi pengguna
-    if ($user && $user->role == 'member') {
+    /* if ($user && $user->role == 'member') {
         // Contoh diskon 10% untuk member
         $harga = $harga - ($harga * 0.10);
-    }
+    } */
 
     // Kirim data buku, pengguna, dan harga (jika perlu) ke view
     return view('layout.toko.sale.create', compact('books', 'users', 'harga', 'user'));
@@ -81,11 +81,11 @@ class SaleController extends Controller
     // Ambil data buku untuk menghitung total harga
     $book = Buku::findOrFail($request->book_id);
 
-// Ambil harga satuan dari data buku
-$unit_price = $book->unit_price;
+    // Ambil harga satuan dari data buku
+    $unit_price = $book->unit_price;
 
-// Hitung total harga
-$total_price = $unit_price * $request->quantity;
+    // Hitung total harga
+    $total_price = $unit_price * $request->quantity;
 
     // Periksa apakah stok cukup
     if ($book->stok < $request->quantity) {
@@ -121,14 +121,16 @@ public function invoice($sale_id)
 
 public function invoiceDownload($sale_id)
 {
-    // Cari data transaksi berdasarkan sale_id
-    $sale = Sale::with(['user', 'book'])->findOrFail($sale_id);
+    $sale = Sale::findOrFail($sale_id);
 
-    // Render invoice sebagai PDF dan langsung download
-    $pdf = PDF::loadView('layout.toko.sale.invoice', compact('sale'));
+    // Jika rute adalah untuk unduhan PDF
+    if (request()->route()->getName() === 'sale.invoice.download') {
+        $pdf = PDF::loadView('layout.toko.sale.invoice', ['sale' => $sale, 'isPdf' => true]);
+        return $pdf->download('Bukti Pembayaran' . $sale->id . '.pdf');
+    }
 
-    // Menyimpan atau mengunduh PDF
-    return $pdf->download('Bukti Pembayaran' . '.pdf');
+    // Jika rute adalah untuk tampilan biasa
+    return view('layout.toko.sale.invoice', ['sale' => $sale, 'isPdf' => false]);
 }
 
 

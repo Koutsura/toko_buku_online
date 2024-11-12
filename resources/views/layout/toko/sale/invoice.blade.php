@@ -32,13 +32,14 @@
         </div>
 
         <!-- Tombol untuk Cetak atau Kembali -->
+        @if(empty($isPdf) || !$isPdf)
         <div class="text-center mt-4">
             <form action="{{ route('sale.invoice.download', $sale->sale_id) }}" method="GET">
                 <button type="submit" class="btn btn-primary">Cetak Struk (PDF)</button>
             </form>
-            <br>
-            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary mt-3">Kembali ke Dashboard</a>
         </div>
+        @endif
     </div>
 </body>
 </html>

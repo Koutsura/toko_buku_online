@@ -11,7 +11,7 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <!-- Content -->
-              <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Pulau</h6>
+              <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Tentang</h6>
               <p>
                 Website Buku Bersama adalah platform digital yang memungkinkan pengguna untuk membeli berbagai jenis buku melalui internet.
               </p>

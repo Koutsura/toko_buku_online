@@ -112,8 +112,8 @@
         @endforeach
     </div>
 </div>
-@include('layout.kecil')
-@include('layout.footer')
+    @include('layout.kecil')
+    @include('layout.footer')
 
   <script>
     const subMenu = document.getElementById("subMenu");

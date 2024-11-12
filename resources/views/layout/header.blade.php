@@ -8,182 +8,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Header</title>
     <link rel="stylesheet" href="{{ asset('css/hello.css') }}">
-  <style>
-    /* Basic styling for the header and dropdown */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      background-color: #f8f9fa;
-    }
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+        }
 
-    .logo a {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      text-decoration: none;
-    }
+        .logo a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
 
-    .nav {
-      display: flex;
-      gap: 15px;
-      list-style: none;
-    }
+        .nav {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
 
-    .nav a {
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-      padding: 8px 12px;
-      transition: background-color 0.3s ease;
-    }
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
 
-    .nav a:hover {
-      background-color: #007bff;
-      color: white;
-      border-radius: 5px;
-    }
+        .nav a:hover {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-    .dropbtn {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 8px 16px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+        .dropbtn {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      min-width: 160px;
-      z-index: 1;
-    }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            z-index: 1;
+        }
 
-    .dropdown-content a {
-      padding: 10px 14px;
-      text-decoration: none;
-      display: block;
-      color: #333;
-    }
+        .dropdown-content a {
+            padding: 10px 14px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
 
+        .subMenu {
+            display: none;
+            padding-left: 20px;
+            background-color: #f1f1f1;
+            margin-top: 5px;
+        }
 
-    .subMenu {
-      display: none;
-      padding-left: 20px;
-      background-color: #f1f1f1;
-      margin-top: 5px;
-    }
+        .active {
+            font-weight: bold;
+            color: #007bff;
+        }
 
-    .active {
-      font-weight: bold;
-      color: #007bff;
-    }
+        .logout-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
 
-    .logout-container {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+        .container h2 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
 
-    .container h2 {
-      font-size: 18px;
-      font-weight: 500;
-      color: #333;
-    }
+        .btn-danger {
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-    .btn-danger {
-      padding: 8px 16px;
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .btn-danger:hover {
-      background-color: #c82333;
-    }
-  </style>
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
-
-  <header>
+<header>
     <div class="logo">
-      <a href="index.php"><span>Buku</span><span class="me">Bersama</span></a>
+        <a href="index.php"><span>Buku</span><span class="me">Bersama</span></a>
     </div>
     <nav class="nav">
-      <a href="{{ route('dashboard') }}">Home</a>
+        <a href="{{ route('dashboard') }}">Home</a>
+        <!-- Category Dropdown -->
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event)">Category 🔻</button>
+            <div class="dropdown-content" id="categoryDropdown">
+                @php
+                    $categories = $buku->pluck('kategori')->unique();
+                @endphp
 
-      <!-- Category Dropdown -->
-      <div class="dropdown">
-        <button class="dropbtn" onclick="toggleDropdown(event)">Category 🔻</button>
-        <div class="dropdown-content" id="categoryDropdown">
-          @php
-              $item = $buku->pluck('kategori')->unique(); // Ambil kategori unik
-          @endphp
+                <a href="#" id="showAllCategories" class="category-link" data-kategori="all">All Categories</a>
 
-          @foreach ($item as $kategori)
-              <a href="#" onclick="toggleSubmenu('{{ $kategori }}', event)">{{ $kategori }}</a>
-              <div id="subMenu_{{ $kategori }}" class="subMenu">
-                  <!-- Konten sesuai kategori akan dimuat di sini -->
-              </div>
-          @endforeach
+                @foreach ($categories as $kategori)
+                    @php
+                        $safeKategori = Str::slug($kategori, '_');
+                    @endphp
+                    <a href="#" class="category-link" data-kategori="{{ $safeKategori }}">{{ $kategori }}</a>
+                @endforeach
+            </div>
+
         </div>
-      </div>
 
-      <a href="{{ route('about') }}">About Us</a>
+        <a href="{{ route('about') }}">About Us</a>
     </nav>
-
     <!-- Logout Button -->
     <div class="logout-container">
-      <div class="container mt-5">
-        <h2>Welcome, {{ Auth::user()->name }}!</h2>
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit" class="btn btn-danger">Logout</button>
-        </form>
-      </div>
+        <div class="container mt-5">
+            <h2>Welcome, {{ Auth::user()->name }}!</h2>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
     </div>
-  </header>
+</header>
 
-  <script>
-    // Toggle dropdown visibility when clicking "Category"
-    function toggleDropdown(event) {
-        event.stopPropagation(); // Prevents event from propagating to window.onclick
-        const dropdown = document.getElementById("categoryDropdown");
-        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-    }
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Event listener untuk kategori di dropdown
+        document.querySelectorAll(".category-link").forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault(); // Mencegah reload halaman
+                const selectedCategory = this.dataset.kategori; // Ambil kategori dari atribut data
 
-    // Toggle submenu visibility when clicking a category
-    function toggleSubmenu(kategori, event) {
-        event.stopPropagation(); // Prevent event from propagating to the dropdown toggle
-        const subMenu = document.getElementById(`subMenu_${kategori}`);
+                // Filter buku berdasarkan kategori
+                filterBooksByCategory(selectedCategory);
+            });
+        });
 
-        // Toggle the submenu visibility
-        subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        // Fungsi untuk memfilter buku berdasarkan kategori
+        function filterBooksByCategory(kategori) {
+            const bookCards = document.querySelectorAll(".book-card"); // Ambil semua kartu buku
+            const categoryTitles = document.querySelectorAll(".category-title"); // Ambil semua judul kategori
 
-        // Optionally, you can add active class for clicked category
-        document.querySelectorAll('.dropdown-content a').forEach(a => a.classList.remove('active'));
-        event.target.classList.add('active');
-    }
+            let hasVisibleBooks = false; // Cek apakah ada buku yang terlihat dalam kategori
 
-    // Close dropdown if clicked outside of it
-    window.onclick = function(event) {
-        const dropdown = document.getElementById("categoryDropdown");
-        if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
-            dropdown.style.display = "none"; // Hide dropdown if clicked outside
+            // Loop untuk setiap judul kategori
+            categoryTitles.forEach(title => {
+                const category = title.dataset.kategori;
+
+                if (kategori === "all" || category === kategori) {
+                    title.style.display = "block"; // Tampilkan judul kategori
+                } else {
+                    title.style.display = "none"; // Sembunyikan judul kategori
+                }
+            });
+
+            // Loop untuk setiap kartu buku
+            bookCards.forEach(card => {
+                const bookCategory = card.dataset.kategori;
+
+                if (kategori === "all" || bookCategory === kategori) {
+                    card.style.display = "block"; // Tampilkan buku yang sesuai
+                    hasVisibleBooks = true;
+                } else {
+                    card.style.display = "none"; // Sembunyikan buku yang tidak sesuai
+                }
+            });
+
+            // Jika tidak ada buku dalam kategori, tambahkan notifikasi
+            if (!hasVisibleBooks && kategori !== "all") {
+                alert("Tidak ada buku dalam kategori ini.");
+            }
         }
-    }
-  </script>
+
+        // Opsi untuk menampilkan semua kategori
+        document.getElementById("showAllCategories").addEventListener("click", function (event) {
+            event.preventDefault();
+            filterBooksByCategory("all"); // Tampilkan semua buku
+        });
+    });
+
+
+</script>
 
 </body>
 </html>
